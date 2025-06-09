@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Wild West Calculators</title>
+    <title>Hitman Calculator - The Wild West</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -15,44 +15,6 @@
             --light: #F5F5F5;
             --dark: #1A1A1A;
             --highlight: #DAA520;
-            --sidebar-width: 250px;
-        }
-        .header {
-            display: flex;
-            align-items: center;
-            padding: 15px;
-            background-color: #2c2f33;
-            border-bottom: 2px solid #5865f2;
-            margin-bottom: 20px;
-        }
-
-        .logo-container {
-            margin-right: 15px;
-        }
-
-        .logo {
-            height: 60px; /* Adjust as needed */
-            width: auto;
-            transition: transform 0.3s ease;
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
-        }
-
-        .header-title {
-            color: white;
-            margin: 0;
-            font-size: 28px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-        }
-
-        /* If you want the logo to stay fixed when scrolling */
-        .fixed-logo {
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            z-index: 1000;
         }
         
         body {
@@ -60,110 +22,62 @@
             background-color: var(--dark);
             color: var(--light);
             line-height: 1.6;
-            padding: 0;
+            padding: 10px;
             margin: 0;
-            display: flex;
-        }
-        
-        .sidebar {
-            width: var(--sidebar-width);
-            background-color: var(--secondary);
-            height: 100vh;
-            position: fixed;
-            padding: 1rem;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.2);
-            overflow-y: auto;
-        }
-        
-        .sidebar-header {
-            color: var(--highlight);
-            text-align: center;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--accent);
-            margin-bottom: 1rem;
-        }
-        
-        .nav-item {
-            padding: 0.8rem;
-            margin: 0.5rem 0;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            display: flex;
-            align-items: center;
-        }
-        
-        .nav-item i {
-            margin-right: 10px;
-            width: 20px;
-            text-align: center;
-        }
-        
-        .nav-item:hover {
-            background-color: rgba(0,0,0,0.3);
-        }
-        
-        .nav-item.active {
-            background-color: var(--accent);
-            font-weight: bold;
-        }
-        
-        .main-content {
-            margin-left: var(--sidebar-width);
-            flex: 1;
-            padding: 2rem;
+            min-height: 100vh;
         }
         
         .container {
-            max-width: 1000px;
+            max-width: 800px;
             margin: 0 auto;
+            padding: 10px;
+        }
+        
+        h1 {
+            color: var(--highlight);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 1rem;
+            font-size: clamp(1.5rem, 4vw, 2rem);
         }
         
         .calculator {
             background-color: var(--secondary);
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            margin-bottom: 2rem;
-        }
-        
-        h1, h2, h3 {
-            color: var(--highlight);
-        }
-        
-        h1 {
-            text-align: center;
-            margin-bottom: 2rem;
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
         
         .input-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
         
         label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
             font-weight: 600;
             color: var(--highlight);
+            font-size: 0.95rem;
         }
         
         input, select {
             width: 100%;
-            padding: 0.8rem;
+            padding: 0.7rem;
             background-color: var(--dark);
             border: 1px solid #444;
             border-radius: 4px;
             color: white;
             font-size: 1rem;
+            box-sizing: border-box;
         }
         
         button {
             background-color: var(--accent);
             color: white;
             border: none;
-            padding: 0.8rem 1.5rem;
+            padding: 0.8rem;
             border-radius: 4px;
             cursor: pointer;
             font-size: 1rem;
@@ -179,604 +93,198 @@
         
         .results {
             background-color: rgba(0, 0, 0, 0.3);
-            padding: 1.5rem;
+            padding: 1.2rem;
             border-radius: 4px;
             border-left: 4px solid var(--highlight);
-            margin-top: 1.5rem;
+            margin-top: 1.2rem;
+        }
+        
+        .results h3 {
+            margin-top: 0;
+            font-size: 1.2rem;
+        }
+        
+        .results p {
+            margin: 0.7rem 0;
         }
         
         .formula-section {
             background-color: var(--secondary);
-            padding: 1.5rem;
-            border-radius: 4px;
-            margin-top: 2rem;
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            overflow-x: auto;
+        }
+        
+        .formula-section h3 {
+            margin-top: 0;
         }
         
         .variables {
-            margin-top: 1.5rem;
-        }
-        
-        .variable {
-            background-color: rgba(0, 0, 0, 0.2);
-            padding: 1rem;
-            margin-bottom: 0.5rem;
-            border-radius: 4px;
-            border-left: 3px solid var(--accent);
+            margin-top: 1.2rem;
+            overflow-x: auto;
         }
         
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 1rem 0;
+            margin: 0.8rem 0;
+            min-width: 600px;
         }
         
         th, td {
-            padding: 0.8rem;
+            padding: 0.6rem;
             text-align: left;
             border-bottom: 1px solid #444;
+            font-size: 0.9rem;
         }
         
         th {
             background-color: rgba(0,0,0,0.2);
         }
         
-        .coming-soon {
-            text-align: center;
-            padding: 2rem;
-            font-size: 1.2rem;
-            color: var(--highlight);
-            background-color: var(--secondary);
-            border-radius: 8px;
-            margin-top: 2rem;
-        }
-        
-        .coming-soon i {
-            font-size: 3rem;
-            margin-top: 1rem;
-            display: block;
-        }
-        
-        .support-section {
-            background-color: var(--secondary);
-            padding: 2rem;
-            border-radius: 8px;
-            margin-top: 2rem;
-            text-align: center;
-        }
-        
-        .support-button {
-            background-color: var(--highlight);
-            color: var(--dark);
-            font-size: 1.2rem;
-            padding: 1rem 2rem;
-            margin-top: 1rem;
-        }
-        
+        /* Responsive adjustments */
         @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-            }
-            
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-                max-height: 300px;
-            }
-            
-            .main-content {
-                margin-left: 0;
-            }
-            
             .container {
+                padding: 5px;
+            }
+            
+            .calculator, .formula-section {
                 padding: 1rem;
             }
+            
+            input, select, button {
+                padding: 0.6rem;
+            }
+            
+            .results, .variables {
+                padding: 1rem;
+            }
+            
+            /* Make formulas scrollable on small screens */
+            .MathJax_Display {
+                overflow-x: auto;
+                overflow-y: hidden;
+            }
         }
-                .xp-calculator {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .xp-image {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .xp-image img {
-            width: 100%;
-            max-width: 600px;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .calculator-form {
-            flex: 1;
-            min-width: 300px;
-            background: #2c2f33;
-            padding: 20px;
-            border-radius: 8px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 8px;
-            background: #40444b;
-            border: 1px solid #202225;
-            border-radius: 4px;
-            color: white;
-        }
-
-        button {
-            background: #5865f2;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.2s;
-        }
-
-        button:hover {
-            background: #4752c4;
-        }
-
-        .results {
-            margin-top: 20px;
-            background: #40444b;
-            padding: 15px;
-            border-radius: 4px;
-        }
-
-        .result-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-
-        .result-value {
-            font-weight: bold;
-            color: #5865f2;
-        }
-        .militia-calculator {
-            margin-top: 20px;
-        }
-
-        .militia-calculator .calculator-form {
-            background: #2c2f33;
-            padding: 20px;
-            border-radius: 8px;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .militia-calculator .form-group {
-            margin-bottom: 15px;
-        }
-
-        .militia-calculator .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        .militia-calculator .form-group input {
-            width: 100%;
-            padding: 8px;
-            background: #40444b;
-            border: 1px solid #202225;
-            border-radius: 4px;
-            color: white;
-        }
-
-        .militia-calculator button {
-            background: #5865f2;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.2s;
-            width: 100%;
-        }
-
-        .militia-calculator button:hover {
-            background: #4752c4;
-        }
-
-        .militia-calculator .results {
-            margin-top: 20px;
-            background: #40444b;
-            padding: 15px;
-            border-radius: 4px;
-        }
-
-        .militia-calculator .result-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-
-        .militia-calculator .result-value {
-            font-weight: bold;
-            color: #5865f2;
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+                padding-bottom: 0.8rem;
+            }
+            
+            label {
+                font-size: 0.85rem;
+            }
+            
+            input, select {
+                font-size: 0.9rem;
+            }
+            
+            button {
+                font-size: 0.9rem;
+                padding: 0.7rem;
+            }
+            
+            .results p {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <div class="logo-container">
-             <img src="img/logo.png" alt="TWW Logo" height="100" width="auto" class="sidebar-logo">
-         </div>
+    <div class="container">
+        <h1><i class="fas fa-crosshairs"></i> Hitman Calculator</h1>
         
-        
-        
-        <div class="nav-item" data-section="outlaw">
-            <i class="fas fa-skull"></i> Outlaw (❌)
-        </div>
-        
-        <div class="nav-item" data-section="justice">
-            <i class="fas fa-gavel"></i> Justice (❌)
-        </div>
-        
-        <div class="nav-item" data-section="hunting">
-            <i class="fas fa-paw"></i> Hunting (❌)
-        </div>
-        
-        <div class="nav-item" data-section="mining">
-            <i class="fas fa-mountain"></i> Mining (❌)
-        </div>
-        
-        <div class="nav-item" data-section="exploration">
-            <i class="fas fa-map"></i> Exploration (❌)
-        </div>
-        
-        <div class="nav-item" data-section="logging">
-            <i class="fas fa-tree"></i> Logging (❌)
-        </div>
-
-        <div class="nav-item active" data-section="hitman">
-            <i class="fas fa-crosshairs"></i> Hitman (✅)
-        </div>
-        
-        <div class="nav-item" data-section="doctor">
-            <i class="fas fa-medkit"></i> Doctor (❌)
-        </div>
-        
-        <div class="nav-item" data-section="tracking">
-            <i class="fas fa-search"></i> Tracking (❌)
-        </div>
-        
-        <div class="nav-item" data-section="sidearms">
-            <i class="fas fa-gun"></i> Sidearms (❌)
-        </div>
-        
-        <div class="nav-item" data-section="primary">
-            <i class="fas fa-gun"></i> Primary Weapons (❌)
-        </div>
-        
-        <div class="nav-item" data-section="militia">
-            <i class="fas fa-shield-alt"></i> Militia (✅)
-        </div>
-        
-        <div class="nav-item" data-section="extra">
-            <i class="fas fa-plus-circle"></i> Extra (✅)
-        </div>
-        
-        <div class="nav-item" data-section="support">
-            <i class="fas fa-heart"></i> Support Me! (✅)
-        </div>
-    </div>
-    
-    <div class="main-content">
-        <div class="container">
-            <!-- Hitman Section (Functional) -->
-            <section id="hitman" class="section active">
-                <h1><i class="fas fa-crosshairs"></i> Hitman Calculator</h1>
-                
-                <div class="calculator">
-                    <div class="input-group">
-                        <label for="X">Total XP Required (X):</label>
-                        <input type="number" id="X" placeholder="5285356" value="5285356">
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="LXP">XP from Low Target (LXP):</label>
-                        <input type="number" id="LXP" value="1050">
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="MXP">XP from Medium Target (MXP):</label>
-                        <input type="number" id="MXP" value="1800">
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="HXP">XP from High Target (HXP):</label>
-                        <input type="number" id="HXP" value="2250">
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="pl">Probability of Low Target (pl %) (Estimate):</label>
-                        <input type="number" id="pl" value="60" min="0" max="100">
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="pM">Probability of Medium Target (pM %) (Estimate):</label>
-                        <input type="number" id="pM" value="30" min="0" max="100">
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="pH">Probability of High Target (pH %) (Estimate):</label>
-                        <input type="number" id="pH" value="10" min="0" max="100">
-                    </div>
-                    
-                    <button id="calculate-hitman">Calculate</button>
-                    
-                    <div class="results">
-                        <h3>Results</h3>
-                        <p>Total Targets Needed (T): <span id="T">0</span></p>
-                        <p>Low Targets: <span id="low-targets">0</span></p>
-                        <p>Medium Targets: <span id="medium-targets">0</span></p>
-                        <p>High Targets: <span id="high-targets">0</span></p>
-                    </div>
-                </div>
-                
-                <div class="formula-section">
-                    <h3>Hitman XP Formulas</h3>
-                    <p>Total Targets Needed:</p>
-                    $$ T = \frac{X}{(LXP \cdot pl + MXP \cdot pM + HXP \cdot pH)} $$
-                    
-                    <p>Target Distribution:</p>
-                    $$
-                    \begin{align*}
-                    \# \text{ Of Low Targets} &= T \times pl \\
-                    \# \text{ Of Medium Targets} &= T \times pM \\
-                    \# \text{ Of High Targets} &= T \times pH
-                    \end{align*}
-                    $$
-                    
-                    <div class="variables">
-                        <h3>Variable Meanings</h3>
-                        <table>
-                            <tr>
-                                <th>X</th>
-                                <th>LXP</th>
-                                <th>MXP</th>
-                                <th>HXP</th>
-                                <th>pl</th>
-                                <th>pM</th>
-                                <th>pH</th>
-                            </tr>
-                            <tr>
-                                <td>Total XP Required</td>
-                                <td>XP from Low-Value Target</td>
-                                <td>XP from Medium-Value Target</td>
-                                <td>XP from High-Value Target</td>
-                                <td>Probability of Low-Value Target</td>
-                                <td>Probability of Medium-Value Target</td>
-                                <td>Probability of High-Value Target</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </section>
+        <div class="calculator">
+            <div class="input-group">
+                <label for="X">Total XP Required (X):</label>
+                <input type="number" id="X" placeholder="5285356" value="5285356">
+            </div>
             
-            <!-- Outlaw Section (Coming Soon) -->
-            <section id="outlaw" class="section" style="display:none;">
-                <h1><i class="fas fa-skull"></i> Outlaw Calculator</h1>
-                <div class="coming-soon">
-                    <p>This calculator is coming soon!</p>
-                    <i class="fas fa-hourglass-half"></i>
-                </div>
-            </section>
+            <div class="input-group">
+                <label for="LXP">XP from Low Target (LXP):</label>
+                <input type="number" id="LXP" value="1050">
+            </div>
             
-            <!-- Justice Section (Coming Soon) -->
-            <section id="justice" class="section" style="display:none;">
-                <h1><i class="fas fa-gavel"></i> Justice Calculator</h1>
-                <div class="coming-soon">
-                    <p>This calculator is coming soon!</p>
-                    <i class="fas fa-hourglass-half"></i>
-                </div>
-            </section>
+            <div class="input-group">
+                <label for="MXP">XP from Medium Target (MXP):</label>
+                <input type="number" id="MXP" value="1800">
+            </div>
             
-            <!-- Hunting Section (Coming Soon) -->
-            <section id="hunting" class="section" style="display:none;">
-                <h1><i class="fas fa-paw"></i> Hunting Calculator</h1>
-                <div class="coming-soon">
-                    <p>This calculator is coming soon!</p>
-                    <i class="fas fa-hourglass-half"></i>
-                </div>
-            </section>
+            <div class="input-group">
+                <label for="HXP">XP from High Target (HXP):</label>
+                <input type="number" id="HXP" value="2250">
+            </div>
             
-            <!-- Mining Section (Coming Soon) -->
-            <section id="mining" class="section" style="display:none;">
-                <h1><i class="fas fa-mountain"></i> Mining Calculator</h1>
-                <div class="coming-soon">
-                    <p>This calculator is coming soon!</p>
-                    <i class="fas fa-hourglass-half"></i>
-                </div>
-            </section>
+            <div class="input-group">
+                <label for="pl">Probability of Low Target (pl %) (Estimate):</label>
+                <input type="number" id="pl" value="60" min="0" max="100">
+            </div>
             
-            <!-- Exploration Section (Coming Soon) -->
-            <section id="exploration" class="section" style="display:none;">
-                <h1><i class="fas fa-map"></i> Exploration Calculator</h1>
-                <div class="coming-soon">
-                    <p>This calculator is coming soon!</p>
-                    <i class="fas fa-hourglass-half"></i>
-                </div>
-            </section>
+            <div class="input-group">
+                <label for="pM">Probability of Medium Target (pM %) (Estimate):</label>
+                <input type="number" id="pM" value="30" min="0" max="100">
+            </div>
             
-            <!-- Logging Section (Coming Soon) -->
-            <section id="logging" class="section" style="display:none;">
-                <h1><i class="fas fa-tree"></i> Logging Calculator</h1>
-                <div class="coming-soon">
-                    <p>This calculator is coming soon!</p>
-                    <i class="fas fa-hourglass-half"></i>
-                </div>
-            </section>
+            <div class="input-group">
+                <label for="pH">Probability of High Target (pH %) (Estimate):</label>
+                <input type="number" id="pH" value="10" min="0" max="100">
+            </div>
             
-            <!-- Doctor Section (Coming Soon) -->
-            <section id="doctor" class="section" style="display:none;">
-                <h1><i class="fas fa-medkit"></i> Doctor Calculator</h1>
-                <div class="coming-soon">
-                    <p>This calculator is coming soon!</p>
-                    <i class="fas fa-hourglass-half"></i>
-                </div>
-            </section>
+            <button id="calculate-hitman">Calculate</button>
             
-            <!-- Tracking Section (Coming Soon) -->
-            <section id="tracking" class="section" style="display:none;">
-                <h1><i class="fas fa-search"></i> Tracking Calculator</h1>
-                <div class="coming-soon">
-                    <p>This calculator is coming soon!</p>
-                    <i class="fas fa-hourglass-half"></i>
-                </div>
-            </section>
+            <div class="results">
+                <h3>Results</h3>
+                <p>Total Targets Needed (T): <span id="T">0</span></p>
+                <p>Low Targets: <span id="low-targets">0</span></p>
+                <p>Medium Targets: <span id="medium-targets">0</span></p>
+                <p>High Targets: <span id="high-targets">0</span></p>
+            </div>
+        </div>
+        
+        <div class="formula-section">
+            <h3>Hitman XP Formulas</h3>
+            <p>Total Targets Needed:</p>
+            $$ T = \frac{X}{(LXP \cdot pl + MXP \cdot pM + HXP \cdot pH)} $$
             
-            <!-- Sidearms Section (Coming Soon) -->
-            <section id="sidearms" class="section" style="display:none;">
-                <h1><i class="fas fa-gun"></i> Sidearms Calculator</h1>
-                <div class="coming-soon">
-                    <p>This calculator is coming soon!</p>
-                    <i class="fas fa-hourglass-half"></i>
-                </div>
-            </section>
+            <p>Target Distribution:</p>
+            $$
+            \begin{align*}
+            \# \text{ Of Low Targets} &= T \times pl \\
+            \# \text{ Of Medium Targets} &= T \times pM \\
+            \# \text{ Of High Targets} &= T \times pH
+            \end{align*}
+            $$
             
-            <!-- Primary Weapons Section (Coming Soon) -->
-            <section id="primary" class="section" style="display:none;">
-                <h1><i class="fas fa-gun"></i> Primary Weapons Calculator</h1>
-                <div class="coming-soon">
-                    <p>This calculator is coming soon!</p>
-                    <i class="fas fa-hourglass-half"></i>
-                </div>
-            </section>
-            
-            <!-- Militia Calculator Section -->
-            <section id="militia" class="section">
-                <h1><i class="fas fa-clock"></i> Militia Time Calculator</h1>
-                <div class="militia-calculator">
-                    <div class="calculator-form">
-                        <div class="form-group">
-                            <label for="total-xp">Total XP Needed (T):</label>
-                            <input type="number" id="total-xp" min="0" value="5285356">
-                        </div>
-                        <div class="form-group">
-                            <label for="xp-per-location">XP per Location (X):</label>
-                            <input type="number" id="xp-per-location" min="1" value="675">
-                        </div>
-                        <div class="form-group">
-                            <label for="locations-per-cycle">Locations per Cycle (L):</label>
-                            <input type="number" id="locations-per-cycle" min="1" value="9">
-                        </div>
-                        <div class="form-group">
-                            <label for="time-per-cycle">Time per Cycle in Seconds (C):</label>
-                            <input type="number" id="time-per-cycle" min="1" value="688">
-                        </div>
-                        <button id="calculate-militia-btn">Calculate</button>
-                        <div class="results">
-                            <div class="result-item">
-                                <span class="result-label">Total Cycles Needed:</span>
-                                <span id="total-cycles" class="result-value">-</span>
-                            </div>
-                            <div class="result-item">
-                                <span class="result-label">Total Time Required:</span>
-                                <span id="total-time" class="result-value">-</span>
-                            </div>
-                        </div>
-                        <button class="support-button" onclick="window.open('https://youtu.be/juigBzdboSU?si=NPhHok2nfbD2nLzA', '_blank')">
-                            <i class="fa-brands fa-youtube"></i> Data from My YouTube Video
-                        </button>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Extra Section (XP Calculator) -->
-            <section id="extra" class="section">
-                <h1><i class="fas fa-calculator"></i> XP Calculator</h1>
-                <div class="xp-calculator">
-                    <div class="xp-image">
-                        <img src="/img/pxp.png" alt="XP Progression Chart">
-                    </div>
-                    <div class="calculator-form">
-                        <div class="form-group">
-                            <label for="current-level">Current Level:</label>
-                            <input type="number" id="current-level" min="1" max="99" value="1">
-                        </div>
-                        <div class="form-group">
-                            <label for="current-xp">Current XP:</label>
-                            <input type="number" id="current-xp" min="0" value="0">
-                        </div>
-                        <button id="calculate-btn">Calculate</button>
-                        <div class="results">
-                            <div class="result-item">
-                                <span class="result-label">XP to Next Level:</span>
-                                <span id="xp-to-next" class="result-value">-</span>
-                            </div>
-                            <div class="result-item">
-                                <span class="result-label">XP to Level 100:</span>
-                                <span id="xp-to-max" class="result-value">-</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Support Section -->
-            <section id="support" class="section" style="display:none;">
-                <h1><i class="fas fa-heart"></i> Support Me!</h1>
-                <div class="support-section">
-                    <p>If you find these calculators helpful or awesome, consider subscribing or following me on my socials!</p>
-                    <button class="support-button" onclick="window.open('https://www.youtube.com/@argosdash', '_blank')">
-                        <i class="fa-brands fa-youtube"></i> Subscribe on YouTube
-                    </button>
-                    <button class="support-button" onclick="window.open('https://www.twitch.tv/pixyfoulke0', '_blank')">
-                        <i class="fa-brands fa-twitch"></i> Twitch
-                    </button>
-
-                    <p style="margin-top: 2rem;">Your support helps me by providing me happiness that I helped someone :). 
-                        $$\tau h{a_n}^k &#8608; (\phi)^\circ \cup$$</p>
-                </div>
-            </section>
+            <div class="variables">
+                <h3>Variable Meanings</h3>
+                <table>
+                    <tr>
+                        <th>X</th>
+                        <th>LXP</th>
+                        <th>MXP</th>
+                        <th>HXP</th>
+                        <th>pl</th>
+                        <th>pM</th>
+                        <th>pH</th>
+                    </tr>
+                    <tr>
+                        <td>Total XP Required</td>
+                        <td>XP from Low-Value Target</td>
+                        <td>XP from Medium-Value Target</td>
+                        <td>XP from High-Value Target</td>
+                        <td>Probability of Low-Value Target</td>
+                        <td>Probability of Medium-Value Target</td>
+                        <td>Probability of High-Value Target</td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 
     <script>
-        // Navigation functionality
-        const navItems = document.querySelectorAll('.nav-item');
-        const sections = document.querySelectorAll('.section');
-        
-        navItems.forEach(item => {
-            item.addEventListener('click', function() {
-                const sectionId = this.getAttribute('data-section');
-                
-                // Update active nav item
-                navItems.forEach(nav => nav.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Show selected section
-                sections.forEach(section => {
-                    section.style.display = 'none';
-                    section.classList.remove('active');
-                });
-                
-                document.getElementById(sectionId).style.display = 'block';
-                document.getElementById(sectionId).classList.add('active');
-            });
-        });
-        
         // Hitman Calculator
         document.getElementById('calculate-hitman').addEventListener('click', function() {
             // Get input values using EXACT variable names from your image
@@ -809,185 +317,11 @@
             const highTargets = T * pH_dec;
             
             // Display results
-            document.getElementById('T').textContent = Math.ceil(T);
-            document.getElementById('low-targets').textContent = Math.ceil(lowTargets);
-            document.getElementById('medium-targets').textContent = Math.ceil(mediumTargets);
-            document.getElementById('high-targets').textContent = Math.ceil(highTargets);
+            document.getElementById('T').textContent = Math.ceil(T).toLocaleString();
+            document.getElementById('low-targets').textContent = Math.ceil(lowTargets).toLocaleString();
+            document.getElementById('medium-targets').textContent = Math.ceil(mediumTargets).toLocaleString();
+            document.getElementById('high-targets').textContent = Math.ceil(highTargets).toLocaleString();
         });
-            // XP table data from the screenshot - EXTRA
-        const xpTable = [
-            {level: 1, xp: 1704, sum: 1704},
-            {level: 2, xp: 2464, sum: 4168},
-            {level: 3, xp: 2944, sum: 7112},
-            {level: 4, xp: 3352, sum: 10464},
-            {level: 5, xp: 3720, sum: 14184},
-            {level: 6, xp: 4064, sum: 18248},
-            {level: 7, xp: 4384, sum: 22632},
-            {level: 8, xp: 4688, sum: 27320},
-            {level: 9, xp: 4984, sum: 32304},
-            {level: 10, xp: 5264, sum: 37568},
-            {level: 11, xp: 5544, sum: 43112},
-            {level: 12, xp: 5808, sum: 48920},
-            {level: 13, xp: 6064, sum: 54984},
-            {level: 14, xp: 6312, sum: 61296},
-            {level: 15, xp: 6560, sum: 67856},
-            {level: 16, xp: 8500, sum: 76356},
-            {level: 17, xp: 9000, sum: 85356},
-            {level: 18, xp: 9650, sum: 95006},
-            {level: 19, xp: 10350, sum: 105356},
-            {level: 20, xp: 11150, sum: 116506},
-            {level: 21, xp: 11950, sum: 128456},
-            {level: 22, xp: 12800, sum: 141256},
-            {level: 23, xp: 13650, sum: 154906},
-            {level: 24, xp: 14550, sum: 169456},
-            {level: 25, xp: 15500, sum: 184956},
-            {level: 26, xp: 16400, sum: 201356},
-            {level: 27, xp: 17400, sum: 218756},
-            {level: 28, xp: 18350, sum: 237106},
-            {level: 29, xp: 19350, sum: 256456},
-            {level: 30, xp: 20350, sum: 276806},
-            {level: 31, xp: 21400, sum: 298206},
-            {level: 32, xp: 22400, sum: 320606},
-            {level: 33, xp: 23450, sum: 344056},
-            {level: 34, xp: 24550, sum: 368606},
-            {level: 35, xp: 25600, sum: 394206},
-            {level: 36, xp: 26700, sum: 420906},
-            {level: 37, xp: 27800, sum: 448706},
-            {level: 38, xp: 28900, sum: 477606},
-            {level: 39, xp: 30000, sum: 507606},
-            {level: 40, xp: 31150, sum: 538756},
-            {level: 41, xp: 32300, sum: 571056},
-            {level: 42, xp: 33450, sum: 604506},
-            {level: 43, xp: 34600, sum: 639106},
-            {level: 44, xp: 35750, sum: 674856},
-            {level: 45, xp: 36900, sum: 711756},
-            {level: 46, xp: 38050, sum: 749806},
-            {level: 47, xp: 39200, sum: 789006},
-            {level: 48, xp: 40400, sum: 829406},
-            {level: 49, xp: 41600, sum: 871006},
-            {level: 50, xp: 42800, sum: 913806},
-            {level: 51, xp: 44000, sum: 957806},
-            {level: 52, xp: 45200, sum: 1003006},
-            {level: 53, xp: 46500, sum: 1049506},
-            {level: 54, xp: 47800, sum: 1097306},
-            {level: 55, xp: 49050, sum: 1146356},
-            {level: 56, xp: 50300, sum: 1196656},
-            {level: 57, xp: 51550, sum: 1248206},
-            {level: 58, xp: 52800, sum: 1301006},
-            {level: 59, xp: 54050, sum: 1355056},
-            {level: 60, xp: 55350, sum: 1410406},
-            {level: 61, xp: 56650, sum: 1467056},
-            {level: 62, xp: 57950, sum: 1525006},
-            {level: 63, xp: 59150, sum: 1584156},
-            {level: 64, xp: 60350, sum: 1644506},
-            {level: 65, xp: 61550, sum: 1706056},
-            {level: 66, xp: 62750, sum: 1768806},
-            {level: 67, xp: 63950, sum: 1832756},
-            {level: 68, xp: 65150, sum: 1897906},
-            {level: 69, xp: 66350, sum: 1964256},
-            {level: 70, xp: 67550, sum: 2031806},
-            {level: 71, xp: 68750, sum: 2100556},
-            {level: 72, xp: 69950, sum: 2170506},
-            {level: 73, xp: 71150, sum: 2241656},
-            {level: 74, xp: 72350, sum: 2314006},
-            {level: 75, xp: 73550, sum: 2387556},
-            {level: 76, xp: 74750, sum: 2462306},
-            {level: 77, xp: 75950, sum: 2538256},
-            {level: 78, xp: 77150, sum: 2615406},
-            {level: 79, xp: 78350, sum: 2693756},
-            {level: 80, xp: 80000, sum: 2773756},
-            {level: 81, xp: 81800, sum: 2855556},
-            {level: 82, xp: 84000, sum: 2939556},
-            {level: 83, xp: 86600, sum: 3026156},
-            {level: 84, xp: 89600, sum: 3115756},
-            {level: 85, xp: 93000, sum: 3208756},
-            {level: 86, xp: 96800, sum: 3305556},
-            {level: 87, xp: 101000, sum: 3406556},
-            {level: 88, xp: 105600, sum: 3512156},
-            {level: 89, xp: 110000, sum: 3622756},
-            {level: 90, xp: 116000, sum: 3738756},
-            {level: 91, xp: 121800, sum: 3860556},
-            {level: 92, xp: 128000, sum: 3988556},
-            {level: 93, xp: 134600, sum: 4123156},
-            {level: 94, xp: 141700, sum: 4264856},
-            {level: 95, xp: 149100, sum: 4413956},
-            {level: 96, xp: 157000, sum: 4570956},
-            {level: 97, xp: 165200, sum: 4736156},
-            {level: 98, xp: 173900, sum: 4910056},
-            {level: 99, xp: 182900, sum: 5092956},
-            {level: 100, xp: 192400, sum: 5285356}
-        ];
-
-        document.getElementById('calculate-btn').addEventListener('click', function() {
-        const currentLevel = parseInt(document.getElementById('current-level').value);
-        const currentXpInLevel = parseInt(document.getElementById('current-xp').value);
-        
-        if (isNaN(currentLevel) || isNaN(currentXpInLevel) || currentLevel < 1 || currentLevel > 99 || currentXpInLevel < 0) {
-            alert('Please enter valid values (Level: 1-99, XP: ≥0)');
-            return;
-        }
-        
-        const currentLevelData = xpTable.find(item => item.level === currentLevel);
-        const nextLevelData = xpTable.find(item => item.level === currentLevel + 1);
-        const maxLevelData = xpTable.find(item => item.level === 100);
-        
-        // Calculate XP needed to reach next level
-        const xpForCurrentLevel = currentLevelData.xp;
-        const xpToNextLevel = Math.max(0, xpForCurrentLevel - currentXpInLevel);
-        
-        // Calculate total XP needed to reach level 100
-        let totalXpToMax = maxLevelData.sum - (currentLevelData.sum - xpForCurrentLevel + currentXpInLevel);
-        totalXpToMax = Math.max(0, totalXpToMax);
-        
-        // Update results
-        document.getElementById('xp-to-next').textContent = xpToNextLevel.toLocaleString();
-        document.getElementById('xp-to-max').textContent = totalXpToMax.toLocaleString();
-    });
-
-    document.getElementById('calculate-militia-btn').addEventListener('click', function() {
-    // Get input values
-    const totalXp = parseFloat(document.getElementById('total-xp').value);
-    const xpPerLocation = parseFloat(document.getElementById('xp-per-location').value);
-    const locationsPerCycle = parseFloat(document.getElementById('locations-per-cycle').value);
-    const timePerCycle = parseFloat(document.getElementById('time-per-cycle').value);
-    
-    // Validate inputs
-    if (isNaN(totalXp) || isNaN(xpPerLocation) || isNaN(locationsPerCycle) || isNaN(timePerCycle) ||
-        totalXp < 0 || xpPerLocation <= 0 || locationsPerCycle <= 0 || timePerCycle <= 0) {
-        alert('Please enter valid positive numbers for all fields');
-        return;
-    }
-    
-    // Calculate using the formula: (T/(X*L))*C
-    const totalCycles = (totalXp / (xpPerLocation * locationsPerCycle));
-    const totalTimeSeconds = totalCycles * timePerCycle;
-    
-    // Convert seconds to days, hours, minutes, seconds
-    const days = Math.floor(totalTimeSeconds / (3600 * 24));
-    const hours = Math.floor((totalTimeSeconds % (3600 * 24)) / 3600);
-    const minutes = Math.floor((totalTimeSeconds % 3600) / 60);
-    const seconds = Math.floor(totalTimeSeconds % 60);
-    
-    // Format the time string
-    let timeString = '';
-    if (days > 0) {
-        timeString += `${days} day${days !== 1 ? 's' : ''} `;
-    }
-    if (hours > 0) {
-        timeString += `${hours} hour${hours !== 1 ? 's' : ''} `;
-    }
-    if (minutes > 0) {
-        timeString += `${minutes} minute${minutes !== 1 ? 's' : ''} `;
-    }
-    if (seconds > 0 || totalTimeSeconds === 0) {
-        timeString += `${seconds} second${seconds !== 1 ? 's' : ''}`;
-    }
-    
-    // Update results
-    document.getElementById('total-cycles').textContent = Math.ceil(totalCycles).toLocaleString();
-    document.getElementById('total-time').textContent = timeString.trim();
-});
-    
     </script>
 </body>
 </html>
